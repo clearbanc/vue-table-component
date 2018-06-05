@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/spatie/vue-table-component",
   "peerDependencies": {
-    "moment": "^2.18.1",
     "vue": "^2.5.0"
   },
   "devDependencies": {
