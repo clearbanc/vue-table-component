@@ -11,8 +11,8 @@ export default class Row {
         return get(this.data, columnName);
     }
 
-    getColumn(columnName) {
-        return this.columns.find(column => column.show === columnName);
+    getColumnBySortField(sortFieldName) {
+        return this.columns.find(column => column.sortFieldName === sortFieldName);
     }
 
     getFilterableValue(columnName) {
@@ -26,7 +26,7 @@ export default class Row {
     }
 
     getSortableValue(columnName) {
-        const dataType = this.getColumn(columnName).dataType;
+        const dataType = this.getColumnBySortField(columnName).dataType;
 
         let value = this.getValue(columnName);
 
@@ -39,8 +39,7 @@ export default class Row {
         }
 
         if (dataType.startsWith('date')) {
-            const format  = dataType.replace('date:', '');
-
+            const format = dataType.replace('date:', '');
             return moment(value, format).format('YYYYMMDDHHmmss');
         }
 

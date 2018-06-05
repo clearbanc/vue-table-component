@@ -32,9 +32,9 @@ export default class Column {
     }
 
     getSortPredicate(sortOrder, allColumns) {
-        const sortFieldName = this.getSortFieldName();
+        const sortFieldName = this.sortFieldName;
 
-        const sortColumn = allColumns.find(column => column.show === sortFieldName);
+        const sortColumn = allColumns.find(column => column.sortFieldName === sortFieldName);
 
         const dataType = sortColumn.dataType;
 
@@ -65,6 +65,10 @@ export default class Column {
     }
 
     getSortFieldName() {
+        return this.sortBy || this.show;
+    }
+
+    get sortFieldName() {
         return this.sortBy || this.show;
     }
 }

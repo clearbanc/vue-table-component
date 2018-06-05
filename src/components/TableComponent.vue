@@ -212,7 +212,7 @@
                     return this.rows;
                 }
 
-                const sortColumn = this.getColumn(this.sort.fieldName);
+                const sortColumn = this.getColumnBySortField(this.sort.fieldName);
 
                 if (!sortColumn) {
                     return this.rows;
@@ -279,8 +279,8 @@
             },
 
             changeSorting(column) {
-                if (this.sort.fieldName !== column.show) {
-                    this.sort.fieldName = column.show;
+                if (this.sort.fieldName !== column.sortFieldName) {
+                    this.sort.fieldName = column.sortFieldName;
                     this.sort.order = 'asc';
                 } else {
                     this.sort.order = (this.sort.order === 'asc' ? 'desc' : 'asc');
@@ -293,8 +293,8 @@
                 this.saveState();
             },
 
-            getColumn(columnName) {
-                return this.columns.find(column => column.show === columnName);
+            getColumnBySortField(sortFieldName) {
+                return this.columns.find(column => column.sortFieldName === sortFieldName);
             },
 
             saveState() {
